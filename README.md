@@ -38,6 +38,8 @@ Load and run the BatchPDFImport LISP into AutoCAD to automate DWG export.
 3. `BATCHPDFIMPORT` will now be a command in AutoCAD. Run the command. You will be prompted to select your PDF file, total number of pages in the PDF, its sheet width/height, and a filename prefix. Then a popup will prompt you to select a save location.
 4. Let the LISP run -- it can take a minute or two depending on how big your sheet specs file is. For reference, the template sheet specs are 16 pages. After it's complete, you can close AutoCAD. 
 
+![BATCHPDFIMPORT Command](docs/images/command.png)
+
 ---
 
 ### Step 3: Install the pyRevit Extension
@@ -73,31 +75,5 @@ Because the extension is linked directly to GitHub via pyRevit, applying future 
 4. Reload pyRevit to see the updates take effect.
 
 ---
-
-## How To Use
-
-1. Click the `Plumbing Calc` button on your ribbon panel to launch the modeless dashboard.
-2. Use the top filters to isolate your target `Phase` and `Level`. The tool automatically identifies the newest chronological phase by default.
-3. For each room line-item, assign its `Occupancy Type` using the alphabetized selector drop-down. The script applies default load factors or provides a symbol indicator (`-`) if seat-count overrides apply.
-4. If needed, select multiple rooms simultaneously and utilize the `Bulk Editor` pane to change types or check `Exclude Room` recursively.
-5. Expand the `View Math Breakdown` panel at the base to evaluate the raw aggregated code math formatting.
-6. Click `Calculate & Push Data to Revit`. This automatically writes parameter values to individual rooms, targets your schedule block instance via `GT_Level_Target`, and updates the sheet schedule integers.
-
-> Note if the table isn't placed or if the Level name isn't filled out or doesn't match any level names, you will see an error message. This can be safely ignored if you don't need the table.
-
-![Plugin Main Window Dashboard](docs/images/calculator_dashboard_ui.png)
-
----
-
-## Manual Parameter Binding Appendix
-
-Use these instructions only if the automated parameter registration loop fails:
-1. Go to the `Manage` tab on the ribbon and click `Project Parameters`.
-2. Click `Add`, select `Shared Parameter`, and click `Select`.
-3. Choose the `PlumbingCalc` group, pick your first parameter, and configure it as an `Instance` parameter.
-4. Set `Group parameter under` to *Data* or *Plumbing*.
-5. Check `Values can vary by group instance`.
-6. In the right-hand Categories list, check `Rooms` and click `OK`.
-7. Repeat this exact sequence for all parameters in the file.
 
 [Back to Setup Workflow](#installation--setup-workflow)
